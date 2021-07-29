@@ -30,19 +30,19 @@
 
 ## 4. URI 中的符号 Symbols in URI
 
-|  符号   | 作用                         | 语义 | 其他 |
-| :-----: | ---------------------------- | ---- | ---- |
-|   `/`   | 键间隔符；                   |      |      |
-| `(` `)` | 索引访问符；查询参数符；     |      |      |
-|   `.`   | 属性方法访问符；             |      |      |
-|   `+`   | 取子集符号；                 | 与   |      |
-|  `, `   | 参数间隔符；枚举间隔符；     | 或   |      |
-| `'` `'` | 字符串标识符；可选集标识符； |      |      |
-|   `*`   | 多字符通配符；               |      |      |
-|   `_`   | 单字符通配符；               |      |      |
-|   `-`   | 切片符；                     | 至   |      |
-|   `!`   | 排除符；                     | 非   |      |
-|   `$`   |                              |      |      |
+|  符号   | 作用                             | 语义 | 其他 |
+| :-----: | -------------------------------- | ---- | ---- |
+|   `/`   | 键间隔符；                       |      |      |
+| `(` `)` | 索引访问符；<br>查询参数符；     |      |      |
+|   `.`   | 属性方法访问符；                 |      |      |
+|   `+`   | 取子集符号；                     | 与   |      |
+|  `, `   | 参数间隔符；<br>枚举间隔符；     | 或   |      |
+| `'` `'` | 字符串标识符；<br>可选集标识符； |      |      |
+|   `*`   | 多字符通配符；                   |      |      |
+|   `_`   | 单字符通配符；                   |      |      |
+|   `-`   | 切片符；                         | 至   |      |
+|   `!`   | 排除符；                         | 非   |      |
+|   `$`   |                                  |      |      |
 
 ## 5. 基本访问 Basic Access
 
@@ -70,42 +70,40 @@
 
 ## 6. OVL 结果集的查询 Query
 
-### 6.1. filter()
+### 6.1. 方法
 
-**用途** 
+#### 6.1.1. 过滤
 
-对结果进行过滤操作；
-
-**格式**
+<kbd>***格式***</kbd>
 
 ```
 filter({key},{cmpr},{value})
 ```
 
-**说明**
+<kbd>***说明***</kbd>
 
 - 比较符 cmpr
 
 | 符号 | 语义     |
 | ---- | -------- |
-| eq   | 等于     |
-| eq   | 等于     |
-| ne   | 不等于   |
-| gt   | 大于     |
-| lt   | 小于     |
-| ge   | 大于等于 |
-| le   | 小于等于 |
+| `eq` | 等于     |
+| `eq` | 等于     |
+| `ne` | 不等于   |
+| `gt` | 大于     |
+| `lt` | 小于     |
+| `ge` | 大于等于 |
+| `le` | 小于等于 |
 
-**示例**
+<kbd>***示例***</kbd>
 
 ```
-?q=filter(id,eq,'0001')   // 过滤 id 等于 '0001' 的项
-?q=filter(age,ge,20)      // 过滤 age 大于等于 20 的项
+?q=filter(id,eq,'0001')   // 过滤出 id 等于 '0001' 的项
+?q=filter(age,ge,20)      // 过滤出 age 大于等于 20 的项
 ```
 
-### 6.2. search()
+#### 6.1.2. 搜索
 
-**格式**
+<kbd>***格式***</kbd>
 
 ```
 search({key},{keyword})
@@ -113,19 +111,19 @@ search({key},{keyword1},{keyword2})
 search({key},{keyword1},{keyword2},{keyword3},...)
 ```
 
-**说明**
+<kbd>***说明***</kbd>
 
 - 逗号分开的关键词之间为“或”关系；
 
-**示例**
+<kbd>***示例***</kbd>
 
 ```
-?q=search(name,Tom,Jarry)                   // 搜索 name 为 Tom 或 Jerry 的项
+?q=search(name,Tom,Jarry)   // 搜索 name 中包含 Tom 或 Jerry 的项
 ```
 
-### 6.3. except()
+#### 6.1.3. 去除
 
-**格式**
+<kbd>***格式***</kbd>
 
 ```
 except({key},{keyword})
@@ -133,19 +131,19 @@ except({key},{keyword1},{keyword2})
 except({key},{keyword1},{keyword2},{keyword3},...)
 ```
 
-**说明**
+<kbd>***说明***</kbd>
 
 - 逗号分开的关键词之间为“或”关系；
 
-**示例**
+<kbd>***示例***</kbd>
 
 ```
-?q=except(name,Tom,Jarry)                   // 去除 name 为 Tom 或 Jerry 的项
+?q=except(name,Tom,Jarry)   // 去除 name 中包含 Tom 或 Jerry 的项
 ```
 
-### 6.4. orderby()
+#### 6.1.4. 排序
 
-**格式**
+<kbd>***格式***</kbd>
 
 ```
 orderby({way},{key1})
@@ -153,40 +151,125 @@ orderby({way},{key1},{key2})
 orderby({way},{key1},{key2},{key3},...)
 ```
 
-**说明**
+<kbd>***说明***</kbd>
 
 - `way` 有两个选项 `asc` 从小到大、`des` 从大到小；
-- 排在前面的 key 优先；
+- 排序时前面的 key 优先；
 
-**示例**
+<kbd>***示例***</kbd>
 
 ```
-?q=orderby(asc,name,age)  // 从小到大排列，name 优先，age 其次
+?q=orderby(asc,name,age)    // 从小到大排列，name 优先，age 其次
 ```
 
-### 6.5. top(10)
+#### 6.1.5. 选择列
 
-### 6.6. last(10)
+<kbd>***格式***</kbd>
 
-### 6.7. skip(10)
+```
+select({key})
+select({key1},{key2})
+select({key1},{key2},{key3},...)
+```
 
-### 6.8. select()
+<kbd>***示例***</kbd>
 
-select(id)
-select(id,name)
-选择 id 和 name
+```
+?q=select(name,age)  // 选择 name 和 age 两列
+```
 
-### 6.9. values()
+#### 6.1.6. 返回所有键
 
-返回所有值
+<kbd>***格式***</kbd>
 
-### 6.10. keys()
+```
+keys()
+```
 
-返回所有键
+<kbd>***示例***</kbd>
 
-### 6.11. 组合使用
+```
+?q=keys()
+```
 
-**示例**
+#### 6.1.7. 返回所有值
+
+<kbd>***格式***</kbd>
+
+```
+values()
+```
+
+<kbd>***示例***</kbd>
+
+```
+?q=values()
+```
+
+<!--
+
+#### 6.1.8. 获取前 n 项
+
+<kbd>***格式***</kbd>
+
+```
+top({n})
+```
+
+<kbd>***示例***</kbd>
+
+```
+?q=top(10)  // 获取前十项
+```
+
+#### 6.1.9. 获取后 n 项
+
+<kbd>***格式***</kbd>
+
+```
+last({n})
+```
+
+<kbd>***示例***</kbd>
+
+```
+?q=last(10)  // 获取后十项
+```
+-->
+
+#### 6.1.10. 截取
+
+<kbd>***格式***</kbd>
+
+```
+cut({start},{end})
+```
+
+<kbd>***说明***</kbd>
+
+- `start` 开始的 index，空表示从 `0` 开始，负数表示倒数；
+- `end` 结束的 index，空代表到最后，负数表示倒数；
+
+<kbd>***示例***</kbd>
+
+```
+?q=cut(1,5)     // 获取 index 从 1 到 5 的项目；
+?q=cut(,5)      // 获取 index 从 0 到 5 的项目；
+?q=cut(1,)      // 获取 index 从 1 到最后的项目；
+?q=cut(-2,5)    // ？
+?q=cut(2,-5)    // ？
+?q=cut(-2,-5)   // ？
+```
+
+### 6.2. 组合
+
+<kbd>***格式***</kbd>
+
+<kbd>***说明***</kbd>
+
+- 从左到右处理；
+
+<kbd>***示例***</kbd>
 
 ```
 ?q=filter(id,gt,0001)+search(name,Tom)+select(id,name,age)+except(age,20)
@@ -197,12 +280,56 @@ select(id,name)
 ?q=search(name,Tom),search(from,beijing) // 搜索 name 为 Tom 或 from 为 beijing 的项
 ```
 
-**说明**
+## 7. OVL 结果集的统计 Statistic
 
-- ovl only
-- 从左到右处理
-- 默认返回键和值
-- 适用方法
-- get
-- put
-- delete
+### 7.1. 方法
+
+count()
+max(id)
+min(price)
+avg(price,2)
+
+### 7.2. 组合
+
+<kbd>***格式***</kbd>
+
+<kbd>***说明***</kbd>
+
+- 从左到右处理；
+
+<kbd>***示例***</kbd>
+
+```
+?q=filter(id,gt,0001)+search(name,Tom)&s=max()
+?q=filter(id,gt,0001),search(name,Tom,Jarry)+select(id,name,age)&s=count()
+```
+
+## 8. KVS 通配 Wildcard
+
+### 8.1. 方法
+
+#### 8.1.1. 多字符通配
+
+<kbd>***格式***</kbd>
+
+`*`
+
+<kbd>***说明***</kbd>
+
+<kbd>***示例***</kbd>
+
+`a*`
+
+#### 8.1.2. 单字符通配
+
+`_`；
+
+#### 8.1.3. 任一字符通配
+
+`'b,c,d'`；
+
+#### 8.1.4. 排除
+
+`'!b,!c,!d'`；
+
+### 8.2. 组合
