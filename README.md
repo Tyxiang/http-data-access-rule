@@ -1,4 +1,4 @@
-# RESTful 数据访问规则 restful data access rule
+# HTTP 数据访问规则 http data access rule
 
 ## 1. 概述 Introduction
 
