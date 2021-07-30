@@ -124,3 +124,9 @@ data: ...
 success: false
 message: "..."
 ```
+
+## 6. 扩展
+
+- [通配扩展](doc/wildcard.md)
+- [查询扩展](doc/query.md)
+- [统计扩展](doc/statistic.md)
