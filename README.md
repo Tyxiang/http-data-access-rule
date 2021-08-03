@@ -89,7 +89,6 @@
 | `Accept: application/octet-stream` | BIN  |
 | `Accept: text/plain`               | BV   |
 
-````
 
 ### 5.2. 响应
 
