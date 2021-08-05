@@ -7,30 +7,35 @@
 <kbd>格式</kbd>
 
 ```
-filter({key},{cmpr},{value})
+filter({key},{cmpr},{value}[,{value}])
 ```
 
 <kbd>说明</kbd>
 
 - `cmpr` 比较符：
 
-| 符号 | 语义     |
-| ---- | -------- |
-| `eq` | 等于     |
-| `eq` | 等于     |
-| `ne` | 不等于   |
-| `gt` | 大于     |
-| `lt` | 小于     |
-| `ge` | 大于等于 |
-| `le` | 小于等于 |
+| 符号 | 语义        |
+| ---- | ----------- |
+| `eq` | 等于        |
+| `eq` | 等于        |
+| `ne` | 不等于      |
+| `gt` | 大于        |
+| `lt` | 小于        |
+| `ge` | 大于等于    |
+| `le` | 小于等于    |
+| `lk` | 近似        |
+| `bt` | 在 ... 之间 |
 
 <kbd>示例</kbd>
 
 ```
 ?q=filter(id,eq,'0001')   // 过滤出 id 等于 '0001' 的项
 ?q=filter(age,ge,20)      // 过滤出 age 大于等于 20 的项
+?q=filter(name,lk,'tom')  // 过滤出 name 近似 tom 的项
+?q=filter(age,bt,20,30)   // 过滤出 age 在 20 到 30 之间的项
 ```
 
+<!--
 ### 1.2. 搜索
 
 <kbd>格式</kbd>
@@ -50,6 +55,7 @@ search({key},{keyword1},{keyword2},{keyword3},...)
 ```
 ?q=search(name,Tom,Jarry)   // 搜索 name 中包含 Tom 或 Jerry 的项
 ```
+-->
 
 ### 1.3. 去除
 
