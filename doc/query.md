@@ -150,23 +150,30 @@ values()
 <kbd>格式</kbd>
 
 ```
-cut({start},{end})
+cut({start}[,][{end}])
 ```
 
 <kbd>说明</kbd>
 
-- `start` 开始的 index，空表示从 `0` 开始，负数表示倒数；
-- `end` 结束的 index，空代表到最后，负数表示倒数；
+- `start` 开始的 index，可以是负数；
+- `end` 结束的 index，可以是负数；
 
 <kbd>示例</kbd>
 
+|         |  a  |  b  |  c  |  d  |  e  |  f  |
+| :-----: | :-: | :-: | :-: | :-: | :-: | :-: |
+| index + |  0  |  1  |  2  |  3  |  4  |  5  |
+| index - | -6  | -5  | -4  | -3  | -2  | -1  |
+
 ```
-?q=cut(1,5)     // 获取 index 从 1 到 5 的项目；
-?q=cut(,5)      // 获取 index 从 0 到 5 的项目；
-?q=cut(1,)      // 获取 index 从 1 到最后的项目；
-?q=cut(-2,5)    // ？
-?q=cut(2,-5)    // ？
-?q=cut(-2,-5)   // ？
+?q=cut(3)       // d
+?q=cut(-2)      // e
+?q=cut(1,3)     // b c d
+?q=cut(,3)      // a b c d
+?q=cut(3,)      // d e f
+?q=cut(-5,2)    // b c
+?q=cut(2,-5)    // c b
+?q=cut(-2,-5)   // e d c b
 ```
 
 ## 2. 组合
