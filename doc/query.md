@@ -126,7 +126,7 @@ select({key1},{key2},{key3},...)
 ?q=select(name,age)  // 选择 name 和 age 两列
 ```
 
-### 1.6. 返回所有键
+### 1.6. 获取键
 
 <kbd>格式</kbd>
 
@@ -134,19 +134,27 @@ select({key1},{key2},{key3},...)
 keys()
 ```
 
+<kbd>说明</kbd>
+
+- 返回所有键；
+
 <kbd>示例</kbd>
 
 ```
 ?q=keys()
 ```
 
-### 1.7. 返回所有值
+### 1.7. 获取值
 
 <kbd>格式</kbd>
 
 ```
 values()
 ```
+
+<kbd>说明</kbd>
+
+- 返回所有值；
 
 <kbd>示例</kbd>
 
