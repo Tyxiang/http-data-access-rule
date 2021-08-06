@@ -7,7 +7,7 @@
 <kbd>格式</kbd>
 
 ```
-filter({key},{cmpr},{value}[,{value}])
+filter({key},{cmpr},{value})
 ```
 
 <kbd>说明</kbd>
@@ -23,7 +23,6 @@ filter({key},{cmpr},{value}[,{value}])
 | `ge` | 大于等于    |
 | `le` | 小于等于    |
 | `lk` | 近似        |
-| `bt` | 在 ... 之间 |
 
 - 多个过滤可以组合使用：
 
@@ -38,55 +37,9 @@ filter({key},{cmpr},{value}[,{value}])
 ?q=filter(id,eq,'0001')   // 过滤出 id 等于 '0001' 的项
 ?q=filter(age,ge,20)      // 过滤出 age 大于等于 20 的项
 ?q=filter(name,lk,'tom')  // 过滤出 name 近似 tom 的项
-?q=filter(age,bt,20,30)   // 过滤出 age 在 20 到 30 之间的项
 ?q=filter(id,gt,0005)-filter(name,lk,Tom)
 ?q=filter(id,gt,0005)+filter(name,lk,Tom)
 ```
-
-<!--
-
-### 1.2. 搜索
-
-<kbd>格式</kbd>
-
-```
-search({key},{keyword})
-search({key},{keyword1},{keyword2})
-search({key},{keyword1},{keyword2},{keyword3},...)
-```
-
-<kbd>说明</kbd>
-
-- 关键词之间为“或”的关系；
-
-<kbd>示例</kbd>
-
-```
-?q=search(name,Tom,Jarry)   // 搜索 name 中包含 Tom 或 Jerry 的项
-```
--->
-
-<!--
-### 1.3. 去除
-
-<kbd>格式</kbd>
-
-```
-except({key},{keyword})
-except({key},{keyword1},{keyword2})
-except({key},{keyword1},{keyword2},{keyword3},...)
-```
-
-<kbd>说明</kbd>
-
-- 关键词之间为“或”的关系；
-
-<kbd>示例</kbd>
-
-```
-?q=except(name,Tom,Jarry)   // 去除 name 中包含 Tom 或 Jerry 的项
-```
--->
 
 ### 1.4. 排序
 
@@ -166,7 +119,11 @@ values()
 <kbd>格式</kbd>
 
 ```
-cut({start}[,][{end}])
+cut({start},{end})
+cut({start})
+cut({start},)
+cut(,{end})
+cut(,)
 ```
 
 <kbd>说明</kbd>
