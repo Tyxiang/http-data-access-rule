@@ -161,5 +161,5 @@ cut(,)
 ```
 ?q=filter(id,gt,0001)-filter(name,lk,Tom).select(id,name,age)
 ?q=filter(id,gt,0001)+filter(name,lk,Tom).select(id,name,age).order(asc,age,name)
-?q=filter(id,gt,0001).filter(name,lk,Tom)-select(id,name,age).order(asc,age,name).cut(2,)
+?q=select(id,name,age).filter(id,gt,0005)-filter(name,lk,tom).order(asc,age,name).keys().cut(2,)
 ```
