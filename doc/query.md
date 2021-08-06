@@ -36,6 +36,7 @@ filter({key},{cmpr},{value}[,{value}])
 ```
 
 <!--
+
 ### 1.2. 搜索
 
 <kbd>格式</kbd>
@@ -57,6 +58,7 @@ search({key},{keyword1},{keyword2},{keyword3},...)
 ```
 -->
 
+<!--
 ### 1.3. 去除
 
 <kbd>格式</kbd>
@@ -76,15 +78,16 @@ except({key},{keyword1},{keyword2},{keyword3},...)
 ```
 ?q=except(name,Tom,Jarry)   // 去除 name 中包含 Tom 或 Jerry 的项
 ```
+-->
 
 ### 1.4. 排序
 
 <kbd>格式</kbd>
 
 ```
-orderby({way},{key1})
-orderby({way},{key1},{key2})
-orderby({way},{key1},{key2},{key3},...)
+order({way},{key1})
+order({way},{key1},{key2})
+order({way},{key1},{key2},{key3},...)
 ```
 
 <kbd>说明</kbd>
@@ -95,7 +98,7 @@ orderby({way},{key1},{key2},{key3},...)
 <kbd>示例</kbd>
 
 ```
-?q=orderby(asc,name,age)    // 从小到大排列，name 优先，age 其次
+?q=order(asc,name,age)    // 从小到大排列，name 优先，age 其次
 ```
 
 ### 1.5. 选择列
@@ -164,4 +167,27 @@ cut({start},{end})
 ?q=cut(-2,5)    // ？
 ?q=cut(2,-5)    // ？
 ?q=cut(-2,-5)   // ？
+```
+
+## 2. 组合
+
+<kbd>说明</kbd>
+
+- 组合连接符：
+
+| 查询组合符 | 作用     | 说明 |
+| :--------: | -------- | ---- |
+|    `+`     | 取合集   |      |
+|    `-`     | 取子集   |      |
+|    `.`     | 访问方法 |      |
+
+- 从左到右处理，左侧的输出是右侧的输入；
+
+<kbd>示例</kbd>
+
+```
+?q=filter(id,gt,0001)-filter(name,lk,Tom)
+?q=filter(id,gt,0001)+filter(name,lk,Tom).select(id,name,age)
+?q=filter(id,gt,0001)+filter(name,lk,Tom).select(id,name,age).order(asc,age,name)
+?q=filter(id,gt,0001)+filter(name,lk,Tom).select(id,name,age).order(asc,age,name).cut(2,)
 ```
