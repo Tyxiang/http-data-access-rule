@@ -1,6 +1,6 @@
 # OVL 结果集的查询 Query
 
-## 1. 方法
+## 1. 查询方法
 
 ### 1.1. 过滤
 
@@ -26,6 +26,13 @@ filter({key},{cmpr},{value}[,{value}])
 | `lk` | 近似        |
 | `bt` | 在 ... 之间 |
 
+- 多个过滤可以组合使用：
+
+| 组合符 | 作用   | 
+| :----: | ------ | 
+|  `+`   | 取合集 | 
+|  `-`   | 取子集 | 
+
 <kbd>示例</kbd>
 
 ```
@@ -33,6 +40,8 @@ filter({key},{cmpr},{value}[,{value}])
 ?q=filter(age,ge,20)      // 过滤出 age 大于等于 20 的项
 ?q=filter(name,lk,'tom')  // 过滤出 name 近似 tom 的项
 ?q=filter(age,bt,20,30)   // 过滤出 age 在 20 到 30 之间的项
+?q=filter(id,gt,0005)-filter(name,lk,Tom)
+?q=filter(id,gt,0005)+filter(name,lk,Tom)
 ```
 
 <!--
@@ -176,25 +185,17 @@ cut({start}[,][{end}])
 ?q=cut(-2,-5)   // e d c b
 ```
 
-## 2. 组合
+## 2. 查询方法的组合
 
 <kbd>说明</kbd>
 
-- 组合连接符：
-
-| 查询组合符 | 作用     | 说明 |
-| :--------: | -------- | ---- |
-|    `+`     | 取合集   |      |
-|    `-`     | 取子集   |      |
-|    `.`     | 访问结果 |      |
-
-- 从左到右处理，左侧的输出是右侧的输入；
+- 查询方法可以组合使用，组合连接符为 `.`；
+- 组合被从左到右处理，左侧的输出是右侧的输入；
 
 <kbd>示例</kbd>
 
 ```
-?q=filter(id,gt,0001)-filter(name,lk,Tom)
-?q=filter(id,gt,0001)+filter(name,lk,Tom).select(id,name,age)
+?q=filter(id,gt,0001)-filter(name,lk,Tom).select(id,name,age)
 ?q=filter(id,gt,0001)+filter(name,lk,Tom).select(id,name,age).order(asc,age,name)
-?q=filter(id,gt,0001)+filter(name,lk,Tom).select(id,name,age).order(asc,age,name).cut(2,)
+?q=filter(id,gt,0001).filter(name,lk,Tom)-select(id,name,age).order(asc,age,name).cut(2,)
 ```
