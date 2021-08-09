@@ -38,7 +38,7 @@ filter({key},{cmpr},{value})
 ?q=filter(age,ge,20)      // 过滤出 age 大于等于 20 的项
 ?q=filter(name,lk,'tom')  // 过滤出 name 近似 tom 的项
 ?q=filter(id,gt,0005)-filter(name,lk,Tom)
-?q=filter(id,gt,0005)+filter(name,lk,Tom)
+?q=filter(age,gt,15)+filter(name,lk,Tom)
 ```
 
 ### 1.4. 排序
