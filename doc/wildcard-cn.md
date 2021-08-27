@@ -1,4 +1,4 @@
-# URI 的通配 Wildcard
+# URI 的通配
 
 <kbd>格式</kbd>
 

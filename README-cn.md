@@ -138,4 +138,4 @@ message: "..."
 
 - [OVL 结果集的查询](doc/query.md)
 - [OVL 结果集的统计](doc/statistic.md)
-- [组合使用](doc/mixing.md)
+- [混合使用](doc/mixing.md)
