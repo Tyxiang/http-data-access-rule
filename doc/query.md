@@ -1,49 +1,49 @@
-# OVL 结果集的查询 Query
+# Query the OVL result
 
-## 1. 查询方法
+## 1. Query method
 
-### 1.1. 过滤
+### 1.1. filter
 
-<kbd>格式</kbd>
+<kbd>Format</kbd>
 
 ```
 filter({key},{cmpr},{value})
 ```
 
-<kbd>说明</kbd>
+<kbd>Description</kbd>
 
-- `cmpr` 比较符：
+- `cmpr` Comparison symbol:
 
-| 符号 | 语义        |
-| ---- | ----------- |
-| `eq` | 等于        |
-| `ne` | 不等于      |
-| `gt` | 大于        |
-| `lt` | 小于        |
-| `ge` | 大于等于    |
-| `le` | 小于等于    |
-| `lk` | 近似        |
+| Symbol | Semantic              |
+| ------ | --------------------- |
+| `eq`   | equal                 |
+| `ne`   | not equal to          |
+| `gt`   | more than the         |
+| `lt`   | less than             |
+| `ge`   | greater or equal to   |
+| `le`   | less than or equal to |
+| `lk`   | like                  |
 
-- 多个过滤可以组合使用：
+- Multiple filters can be used in combination:
 
-| 组合符 | 作用   | 
-| :----: | ------ | 
-|  `+`   | 取合集 | 
-|  `-`   | 取子集 | 
+| Symbol | Semantic        |
+| :----: | --------------- |
+|  `+`   | set merge       |
+|  `-`   | set subtraction |
 
-<kbd>示例</kbd>
+<kbd>Example</kbd>
 
 ```
-?q=filter(id,eq,'0001')   // 过滤出 id 等于 '0001' 的项
-?q=filter(age,ge,20)      // 过滤出 age 大于等于 20 的项
-?q=filter(name,lk,'tom')  // 过滤出 name 近似 tom 的项
+?q=filter(id,eq,'0001')   // Filter out items with id equal to '0001'
+?q=filter(age,ge,20)      // Filter out items that age is greater than or equal to 20
+?q=filter(name,lk,'tom')  // Filter out items that name is similar to tom
 ?q=filter(id,gt,0005)-filter(name,lk,Tom)
 ?q=filter(age,gt,15)+filter(name,lk,Tom)
 ```
 
-### 1.4. 排序
+### 1.4. Order
 
-<kbd>格式</kbd>
+<kbd>Format</kbd>
 
 ```
 order({way},{key1})
@@ -51,20 +51,20 @@ order({way},{key1},{key2})
 order({way},{key1},{key2},{key3},...)
 ```
 
-<kbd>说明</kbd>
+<kbd>Description</kbd>
 
-- `way` 有两个选项 `asc` 从小到大、`des` 从大到小；
-- 排序时前面的 key 优先；
+- There are two options for `way`, `asc` from small to large, and `des` from large to small.
+- When sorting, the key on the left takes precedence;
 
-<kbd>示例</kbd>
+<kbd>Example</kbd>
 
 ```
-?q=order(asc,name,age)    // 从小到大排列，name 优先，age 其次
+?q=order(asc,name,age)    // Sort from smallest to largest, name first, age second
 ```
 
-### 1.5. 选择列
+### 1.5. Select Column
 
-<kbd>格式</kbd>
+<kbd>Format</kbd>
 
 ```
 select({key})
@@ -72,51 +72,51 @@ select({key1},{key2})
 select({key1},{key2},{key3},...)
 ```
 
-<kbd>示例</kbd>
+<kbd>Example</kbd>
 
 ```
-?q=select(name,age)  // 选择 name 和 age 两列
+?q=select(name,age)  // Select the name and age columns
 ```
 
-### 1.6. 获取键
+### 1.6. Get Keys
 
-<kbd>格式</kbd>
+<kbd>Format</kbd>
 
 ```
 keys()
 ```
 
-<kbd>说明</kbd>
+<kbd>Description</kbd>
 
-- 返回所有键；
+- Return all keys.
 
-<kbd>示例</kbd>
+<kbd>Example</kbd>
 
 ```
 ?q=keys()
 ```
 
-### 1.7. 获取值
+### 1.7. Get Value
 
-<kbd>格式</kbd>
+<kbd>Format</kbd>
 
 ```
 values()
 ```
 
-<kbd>说明</kbd>
+<kbd>Description</kbd>
 
-- 返回所有值；
+- Return all values.
 
-<kbd>示例</kbd>
+<kbd>Example</kbd>
 
 ```
 ?q=values()
 ```
 
-### 1.8. 切片
+### 1.8. Cut
 
-<kbd>格式</kbd>
+<kbd>Format</kbd>
 
 ```
 cut({start},{end})
@@ -126,12 +126,13 @@ cut(,{end})
 cut(,)
 ```
 
-<kbd>说明</kbd>
+<kbd>Description</kbd>
 
-- `start` 开始的 index，可以是负数；
-- `end` 结束的 index，可以是负数；
+- `start` The starting index.
+- `end` The ending index. 
+- The index can be negative.
 
-<kbd>示例</kbd>
+<kbd>Example</kbd>
 
 |         |  a  |  b  |  c  |  d  |  e  |  f  |
 | :-----: | :-: | :-: | :-: | :-: | :-: | :-: |
@@ -149,14 +150,14 @@ cut(,)
 ?q=cut(-2,-5)   // e d c b
 ```
 
-## 2. 查询方法的组合
+## 2. Combination of query methods
 
-<kbd>说明</kbd>
+<kbd>Description</kbd>
 
-- 查询方法可以组合使用，组合符为 `.`；
-- 组合被从左到右处理，左侧的输出是右侧的输入；
+- The query methods can be used in combination, the combinator is `.`.
+- The combination is processed from left to right, the output on the left is the input on the right.
 
-<kbd>示例</kbd>
+<kbd>Example</kbd>
 
 ```
 ?q=filter(id,gt,0001)-filter(name,lk,Tom).select(id,name,age)

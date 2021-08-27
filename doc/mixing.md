@@ -1,16 +1,16 @@
-# 组合使用
+# Mix using
 
-<kbd>说明</kbd>
+<kbd>Description</kbd>
 
-- 用 `&` 实现查询与统计的组合；
-- 查询会被先执行；
-- 统计会被后执行；
-- 查询的输出会被作为统计的输入；
+- You can use `&` to combine query and statistic.
+- The query will be executed first.
+- The statistic will be executed later.
+- The output of the query will be used as the input of the statistic.
 
-<kbd>示例</kbd>
+<kbd>Example</kbd>
 
 ```  
 ?q=filter(age,gt,18)&s=max(age)
 ?q=s=max(age)&filter(age,gt,18) 
 ```
-注：以上示例的结果相同。
+Note: The results of the above examples are the same. 

@@ -1,19 +1,18 @@
-# URI 的通配 Wildcard
+# URI Wildcard
 
-<kbd>格式</kbd>
+<kbd>Format</kbd>
 
-|    通配符    | 作用                            |
-| :----------: | ------------------------------- |
-|     `*`      | 匹配多个任意字符；              |
-|     `_`      | 匹配单个任意字符；              |
-|  `'b,c,d'`   | 匹配 b、c、d 中任意一个字符；   |
-| `'!b,!c,!d'` | 匹配 b、c、d 之外任意一个字符； |
+| Wildcard Symbol | Semantic                            |
+| :-------------: | ----------------------------------- |
+|       `*`       | Match multiple arbitrary characters |
+|       `_`       | Match any single character          |
+|    `'b,c,d'`    | Match any character among b, c, d   |
+|  `'!b,!c,!d'`   | Match any character except b, c, d  |
 
-<kbd>说明</kbd>
+<kbd>Description</kbd>
 
+<kbd>Example</kbd>
 
-<kbd>示例</kbd>
-
-```  
+```
 
 ```

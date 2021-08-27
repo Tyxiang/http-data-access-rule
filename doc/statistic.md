@@ -1,22 +1,23 @@
-# OVL 结果集的统计 Statistic
+# Statistic on the OVL result
 
-<kbd>格式</kbd>
+<kbd>Format</kbd>
 
-| 方法 | 格式         | 说明           | 示例          |
-| ---- | ------------ | -------------- | ------------- |
-| 最大 | `max({key})` | 返回最大项；   | `?s=max(age)` |
-| 最小 | `min({key})` | 返回最小项；   | `?s=min(age)` |
-| 平均 | `avg({key})` | 返回平均值；   | `?s=avg(age)` |
-| 总数 | `count()`    | 返回成员总数； | `?s=count()`  |
+| Method  | Format       | Description                        | Example       |
+| ------- | ------------ | ---------------------------------- | ------------- |
+| maximum | `max({key})` | Return the largest item            | `?s=max(age)` |
+| minimum | `min({key})` | Return the smallest item           | `?s=min(age)` |
+| average | `avg({key})` | Return the average                 | `?s=avg(age)` |
+| count   | `count()`    | Return the total number of members | `?s=count()`  |
 
-<kbd>说明</kbd>
+<kbd>Description</kbd>
 
-- 对结果集进行统计，返回统计结果；
+- Take statistic on the result and return the statistical result.
 
-<kbd>示例</kbd>
+<kbd>Example</kbd>
 
-```  
+```
 ?s=max(age)
 ?s=count()
 ```
-注：以上示例的结果相同。
+
+Note: The results of the above examples are the same. 
