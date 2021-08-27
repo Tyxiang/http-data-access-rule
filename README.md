@@ -1,100 +1,104 @@
-# HTTP 数据访问规则 http data access rule
+# HTTP Data Access Rule
 
-## 1. 概述 Introduction
+## 1. Introduction
 
-这是一套基于 HTTP 协议，以 RESTful 方式访问结构化数据、半结构化数据的方法。
+This is a set of methods for accessing structured and semi-structured data using the HTTP protocol.
 
-## 2. 符号 Symbols
+## 2. Symbols
 
-- 格式表达时 `{n}` 代表 `n` 为变量，`n` 的值是变化的；
-- URI 中的符号 Symbols in URI：
+- In the format description, `{n}` means that `n` is a variable.
 
-|  符号   | 作用                             | 其他 |
-| :-----: | -------------------------------- | ---- |
-|   `/`   | 键间隔；                         |      |
-| `(` `)` | 索引访问；<br>函数参数；         |      |
-|   `.`   | 访问属性、方法；<br>访问结果集； |      |
-|   `+`   | 集合求并；                       |      |
-|   `-`   | 集合求差；                       |      |
-|  `, `   | 参数间隔；<br>枚举间隔；         |      |
-| `'` `'` | 可选集标识；                     |      |
-|   `*`   | 多字符通配；                     |      |
-|   `_`   | 单字符通配；                     |      |
-|   `!`   | 排除；<br>非；                   |      |
-|   `$`   |                                  |      |
+<!--
+- Symbols in URI：
 
-## 3. 缩略语 Abbreviations
+| Symbol  | Effect                           | Other |
+| :-----: | -------------------------------- | ----- |
+|   `/`   | Spacer between keys              |       |
+| `(` `)` | 索引访问；<br>函数参数；         |       |
+|   `.`   | 访问属性、方法；<br>访问结果集； |       |
+|   `+`   | 集合求并；                       |       |
+|   `-`   | 集合求差；                       |       |
+|  `, `   | 参数间隔；<br>枚举间隔；         |       |
+| `'` `'` | 可选集标识；                     |       |
+|   `*`   | 多字符通配；                     |       |
+|   `_`   | 单字符通配；                     |       |
+|   `!`   | 排除；<br>非；                   |       |
+|   `$`   |                                  |       |
 
-- `OVL` 有序值列表（列表）；
-- `KVS` 键值对集合（集合）；
-- `SV` 标量；
-- `URI` 资源定位符；
+-->
 
-## 4. 数据的标识 Data Identifying
+## 3. Abbreviations
+
+- `OVL` Ordered values list.
+- `KVS` Key-value set.
+- `SV` Scalar.
+- `URI` Uniform Resource Identifiers.
+
+## 4. Identify data with URI
 
 ### 4.1. KVS
 
-| URI                 | 语义         | 其他 |
-| ------------------- | ------------ | ---- |
-| `/{key}`            | KVS 的值；   |      |
-| `/{key}.{property}` | KVS 的属性； |      |
+| URI                 | Semantic        | Other |
+| ------------------- | --------------- | ----- |
+| `/{key}`            | Value of KVS    |       |
+| `/{key}.{property}` | Property of KVS |       |
 
 ### 4.2. OVL
 
-| URI                          | 语义             | 其他 |
-| ---------------------------- | ---------------- | ---- |
-| `/{key}`                     | OVL 的值；       |      |
-| `/{key}()`                   | OVL 的所有成员； |      |
-| `/{key}({index})`            | OVL 成员的值；   |      |
-| `/{key}({index}).{property}` | OVL 成员的属性;  |      |
+| URI                          | Semantic                     | Other |
+| ---------------------------- | ---------------------------- | ----- |
+| `/{key}`                     | Value of OVL                 |       |
+| `/{key}()`                   | All members of OVL           |       |
+| `/{key}({index})`            | The value of a OVL member    |       |
+| `/{key}({index}).{property}` | The property of a OVL member |       |
 
-## 5. RESTful 方式访问数据
+## 5. Access data by HTTP
 
-### 5.1. 请求
+### 5.1. Request
 
-- HTTP 操作：
+- Operating data：
 
-|  方法  | URI                          | 语义                  | 说明 |
-| :----: | ---------------------------- | --------------------- | ---- |
-|  POST  | `/{key}`                     | KVS 增加值；          |      |
-|  POST  | `/{key}()`                   | OVL 增加成员；        |      |
-|  GET   | `/{key}`                     | 获取值；              |      |
-|  GET   | `/{key}.{property}`          | 获取属性；            |      |
-|  GET   | `/{key}({index})`            | 获取 OVL 成员的值；   |      |
-|  GET   | `/{key}({index}).{property}` | 获取 OVL 成员的属性； |      |
-|  PUT   | `/{key}`                     | 设置值；              |      |
-|  PUT   | `/{key}.{property}`          | 设置属性；            |      |
-|  PUT   | `/{key}({index})`            | 设置 OVL 成员的值；   |      |
-|  PUT   | `/{key}({index}).{property}` | 设置 OVL 成员的属性； |      |
-| DELETE | `/{key}`                     | 删除值；              |      |
-| DELETE | `/{key}({index})`            | 删除 OVL 成员；       |      |
+| Method | URI                          | Semantic                         | Other |
+| :----: | ---------------------------- | -------------------------------- | ----- |
+|  POST  | `/{key}`                     | Add value to KVS                 |       |
+|  POST  | `/{key}()`                   | Add member to OVL                |       |
+|  GET   | `/{key}`                     | Get value                        |       |
+|  GET   | `/{key}.{property}`          | Get property                     |       |
+|  GET   | `/{key}({index})`            | Get the value of a OVL member    |       |
+|  GET   | `/{key}({index}).{property}` | Get the property of a OVL member |       |
+|  PUT   | `/{key}`                     | Set value                        |       |
+|  PUT   | `/{key}.{property}`          | Set property                     |       |
+|  PUT   | `/{key}({index})`            | Set the value of a OVL member    |       |
+|  PUT   | `/{key}({index}).{property}` | Set the property of a OVL member |       |
+| DELETE | `/{key}`                     | Delete a value                   |       |
+| DELETE | `/{key}({index})`            | Delete a OVL member              |       |
 
-- 通过 Header 申明 Body 中的数据格式，默认为 JSON；
+- Use Header to declare the data format (the default is JSON):
 
-| Header                                   | 格式 |
-| ---------------------------------------- | ---- |
-| `Content-Type: application/json`         | JSON |
-| `Content-type: application/x-yaml`       | YAML |
-| `Content-type: application/xml`          | XML  |
-| `Content-type: text/csv`                 | CSV  |
-| `Content-type: application/octet-stream` | BIN  |
-| `Content-type: text/plain`               | BV   |
+| Header                                   | Format |
+| ---------------------------------------- | ------ |
+| `Content-Type: application/json`         | JSON   |
+| `Content-type: application/x-yaml`       | YAML   |
+| `Content-type: application/xml`          | XML    |
+| `Content-type: text/csv`                 | CSV    |
+| `Content-type: application/octet-stream` | BIN    |
+| `Content-type: text/plain`               | BV     |
 
-- 通过 Header 申明期望的数据格式，默认为 JSON；
+- Use Header to declare the expected data format (the default is JSON):
 
-| Header                             | 格式 |
-| ---------------------------------- | ---- |
-| `Accept: application/json`         | JSON |
-| `Accept: application/x-yaml`       | YAML |
-| `Accept: application/xml`          | XML  |
-| `Accept: text/csv`                 | CSV  |
-| `Accept: application/octet-stream` | BIN  |
-| `Accept: text/plain`               | BV   |
+| Header                             | Format |
+| ---------------------------------- | ------ |
+| `Accept: application/json`         | JSON   |
+| `Accept: application/x-yaml`       | YAML   |
+| `Accept: application/xml`          | XML    |
+| `Accept: text/csv`                 | CSV    |
+| `Accept: application/octet-stream` | BIN    |
+| `Accept: text/plain`               | BV     |
 
-### 5.2. 响应
+### 5.2. Response
 
-- 通过 Header 申明 HTTP Body 中的数据格式，默认为 JSON；
-- 成功响应：
+- Use Header to declare the data format (the default is JSON):
+- Successful response: 
 
 ```python
 # JSON
@@ -110,7 +114,7 @@ success: true
 data: ...
 ```
 
-- 失败响应：
+- Failure response:
 
 ```python
 # JSON
@@ -126,12 +130,12 @@ success: false
 message: "..."
 ```
 
-## 6. URI 扩展
+## 6. URI expansion
 
-- [URI 的通配](doc/wildcard.md)
+- [URI wildcard](doc/wildcard.md)
 
-## 7. 参数扩展
+## 7. Parameter expansion
 
-- [OVL 结果集的查询](doc/query.md)
-- [OVL 结果集的统计](doc/statistic.md)
-- [组合使用](doc/mixing.md)
+- [Query the OVL result](doc/query.md)
+- [Statistic on the OVL result](doc/statistic.md)
+- [Mix using](doc/mixing.md)
