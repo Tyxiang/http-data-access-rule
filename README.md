@@ -31,7 +31,7 @@ This is a set of methods for accessing structured and semi-structured data using
 
 - `OVL` Ordered values list.
 - `KVS` Key-value set.
-- `SV` Scalar.
+- `SC` Scalar.
 - `URI` Uniform Resource Identifiers.
 
 ## 4. Identify data with URI
@@ -82,7 +82,7 @@ This is a set of methods for accessing structured and semi-structured data using
 | `Content-type: application/xml`          | XML    |
 | `Content-type: text/csv`                 | CSV    |
 | `Content-type: application/octet-stream` | BIN    |
-| `Content-type: text/plain`               | SV     |
+| `Content-type: text/plain`               | SC     |
 
 - Use Header to declare the expected data format (the default is JSON):
 
@@ -93,12 +93,12 @@ This is a set of methods for accessing structured and semi-structured data using
 | `Accept: application/xml`          | XML    |
 | `Accept: text/csv`                 | CSV    |
 | `Accept: application/octet-stream` | BIN    |
-| `Accept: text/plain`               | SV     |
+| `Accept: text/plain`               | SC     |
 
 ### 5.2. Response
 
 - Use Header to declare the data format (the default is JSON):
-- Successful response: 
+- Successful response:
 
 ```python
 # JSON

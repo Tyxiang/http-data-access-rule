@@ -31,7 +31,7 @@
 
 - `OVL` 有序值列表；
 - `KVS` 键值对集合；
-- `SV` 标量；
+- `SC` 标量；
 - `URI` 统一资源标识符；
 
 ## 4. 用 URI 标识数据
@@ -82,7 +82,7 @@
 | `Content-type: application/xml`          | XML  |
 | `Content-type: text/csv`                 | CSV  |
 | `Content-type: application/octet-stream` | BIN  |
-| `Content-type: text/plain`               | BV   |
+| `Content-type: text/plain`               | SC   |
 
 - 通过 Header 申明期望的数据格式（默认为 JSON）：
 
@@ -93,7 +93,7 @@
 | `Accept: application/xml`          | XML  |
 | `Accept: text/csv`                 | CSV  |
 | `Accept: application/octet-stream` | BIN  |
-| `Accept: text/plain`               | BV   |
+| `Accept: text/plain`               | SC   |
 
 ### 5.2. 响应
 
