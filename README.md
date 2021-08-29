@@ -82,7 +82,7 @@ This is a set of methods for accessing structured and semi-structured data using
 | `Content-type: application/xml`          | XML    |
 | `Content-type: text/csv`                 | CSV    |
 | `Content-type: application/octet-stream` | BIN    |
-| `Content-type: text/plain`               | BV     |
+| `Content-type: text/plain`               | SV     |
 
 - Use Header to declare the expected data format (the default is JSON):
 
@@ -93,7 +93,7 @@ This is a set of methods for accessing structured and semi-structured data using
 | `Accept: application/xml`          | XML    |
 | `Accept: text/csv`                 | CSV    |
 | `Accept: application/octet-stream` | BIN    |
-| `Accept: text/plain`               | BV     |
+| `Accept: text/plain`               | SV     |
 
 ### 5.2. Response
 
