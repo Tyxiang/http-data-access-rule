@@ -1,13 +1,13 @@
 # Mix using
 
-<kbd>Description</kbd>
+📌 Description
 
 - You can use `&` to combine query and statistic.
 - The query will be executed first.
 - The statistic will be executed later.
 - The output of the query will be used as the input of the statistic.
 
-<kbd>Example</kbd>
+📌 Example
 
 ```  
 ?q=filter(age,gt,18)&s=max(age)

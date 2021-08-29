@@ -1,6 +1,6 @@
 # Statistic on the OVL result
 
-<kbd>Format</kbd>
+📌 Format
 
 | Method  | Format       | Description                        | Example       |
 | ------- | ------------ | ---------------------------------- | ------------- |
@@ -9,15 +9,15 @@
 | average | `avg({key})` | Return the average                 | `?s=avg(age)` |
 | count   | `count()`    | Return the total number of members | `?s=count()`  |
 
-<kbd>Description</kbd>
+📌 Description
 
 - Take statistic on the result and return the statistical result.
 
-<kbd>Example</kbd>
+📌 Example
+
+The following example has the same result:
 
 ```
 ?s=max(age)
 ?s=count()
 ```
-
-Note: The results of the above examples are the same. 
