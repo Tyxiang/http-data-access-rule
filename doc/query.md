@@ -4,13 +4,13 @@
 
 ### 1.1. filter
 
-📌 Format
+<kbd>📌 Format</kbd>
 
 ```
 filter({key},{cmpr},{value})
 ```
 
-📌 Description
+<kbd>📌 Description</kbd>
 
 - `cmpr` Comparison symbol:
 
@@ -31,7 +31,7 @@ filter({key},{cmpr},{value})
 |  `+`   | set merge       |
 |  `-`   | set subtraction |
 
-📌 Example
+<kbd>📌 Example</kbd>
 
 ```
 ?q=filter(id,eq,'0001')   // Filter out items with id equal to '0001'
@@ -43,7 +43,7 @@ filter({key},{cmpr},{value})
 
 ### 1.4. Order
 
-📌 Format
+<kbd>📌 Format</kbd>
 
 ```
 order({way},{key1})
@@ -51,12 +51,12 @@ order({way},{key1},{key2})
 order({way},{key1},{key2},{key3},...)
 ```
 
-📌 Description
+<kbd>📌 Description</kbd>
 
 - There are two options for `way`, `asc` from small to large, and `des` from large to small.
 - When sorting, the key on the left takes precedence;
 
-📌 Example
+<kbd>📌 Example</kbd>
 
 ```
 ?q=order(asc,name,age)    // Sort from smallest to largest, name first, age second
@@ -64,7 +64,7 @@ order({way},{key1},{key2},{key3},...)
 
 ### 1.5. Select Column
 
-📌 Format
+<kbd>📌 Format</kbd>
 
 ```
 select({key})
@@ -72,7 +72,7 @@ select({key1},{key2})
 select({key1},{key2},{key3},...)
 ```
 
-📌 Example
+<kbd>📌 Example</kbd>
 
 ```
 ?q=select(name,age)  // Select the name and age columns
@@ -80,17 +80,17 @@ select({key1},{key2},{key3},...)
 
 ### 1.6. Get Keys
 
-📌 Format
+<kbd>📌 Format</kbd>
 
 ```
 keys()
 ```
 
-📌 Description
+<kbd>📌 Description</kbd>
 
 - Return all keys.
 
-📌 Example
+<kbd>📌 Example</kbd>
 
 ```
 ?q=keys()
@@ -98,17 +98,17 @@ keys()
 
 ### 1.7. Get Value
 
-📌 Format
+<kbd>📌 Format</kbd>
 
 ```
 values()
 ```
 
-📌 Description
+<kbd>📌 Description</kbd>
 
 - Return all values.
 
-📌 Example
+<kbd>📌 Example</kbd>
 
 ```
 ?q=values()
@@ -116,7 +116,7 @@ values()
 
 ### 1.8. Cut
 
-📌 Format
+<kbd>📌 Format</kbd>
 
 ```
 cut({start},{end})
@@ -126,13 +126,13 @@ cut(,{end})
 cut(,)
 ```
 
-📌 Description
+<kbd>📌 Description</kbd>
 
 - `start` The starting index.
 - `end` The ending index. 
 - The index can be negative.
 
-📌 Example
+<kbd>📌 Example</kbd>
 
 |         |  a  |  b  |  c  |  d  |  e  |  f  |
 | :-----: | :-: | :-: | :-: | :-: | :-: | :-: |
@@ -152,12 +152,12 @@ cut(,)
 
 ## 2. Combination of query methods
 
-📌 Description
+<kbd>📌 Description</kbd>
 
 - The query methods can be used in combination, the combinator is `.`.
 - The combination is processed from left to right, the output on the left is the input on the right.
 
-📌 Example
+<kbd>📌 Example</kbd>
 
 ```
 ?q=filter(id,gt,0001)-filter(name,lk,Tom).select(id,name,age)
