@@ -38,19 +38,23 @@ This is a set of methods for accessing structured and semi-structured data using
 
 ### 4.1. KVS
 
-| URI                 | Semantic        | Other |
-| ------------------- | --------------- | ----- |
-| `/{key}`            | Value of KVS    |       |
-| `/{key}.{property}` | Property of KVS |       |
+| URI                  | Semantic        | Other |
+| -------------------- | --------------- | ----- |
+| `/{key}`             | Value of KVS    |       |
+| `/{key}/`            | Value of KVS    |       |
+| `/{key}.{property}`  | Property of KVS |       |
+| `/{key}.{property}/` | Value of KVS    |       |
 
 ### 4.2. OVL
 
 | URI                          | Semantic                     | Other |
 | ---------------------------- | ---------------------------- | ----- |
 | `/{key}`                     | Value of OVL                 |       |
-| `/{key}()`                   | All members of OVL           |       |
-| `/{key}({index})`            | The value of a OVL member    |       |
-| `/{key}({index}).{property}` | The property of a OVL member |       |
+| `/{key}/`                    | All members of OVL           |       |
+| `/{key}/{index}`             | The value of a OVL member    |       |
+| `/{key}/{index}/`            | The value of a OVL member    |       |
+| `/{key}/{index}.{property}`  | The property of a OVL member |       |
+| `/{key}/{index}/.{property}` | The property of a OVL member |       |
 
 ## 5. Access data by HTTP
 
@@ -58,20 +62,21 @@ This is a set of methods for accessing structured and semi-structured data using
 
 - Operating data：
 
-| Method | URI                          | Semantic                         | Other |
-| :----: | ---------------------------- | -------------------------------- | ----- |
-|  POST  | `/{key}`                     | Add value to KVS                 |       |
-|  POST  | `/{key}()`                   | Add member to OVL                |       |
-|  GET   | `/{key}`                     | Get value                        |       |
-|  GET   | `/{key}.{property}`          | Get property                     |       |
-|  GET   | `/{key}({index})`            | Get the value of a OVL member    |       |
-|  GET   | `/{key}({index}).{property}` | Get the property of a OVL member |       |
-|  PUT   | `/{key}`                     | Set value                        |       |
-|  PUT   | `/{key}.{property}`          | Set property                     |       |
-|  PUT   | `/{key}({index})`            | Set the value of a OVL member    |       |
-|  PUT   | `/{key}({index}).{property}` | Set the property of a OVL member |       |
-| DELETE | `/{key}`                     | Delete a value                   |       |
-| DELETE | `/{key}({index})`            | Delete a OVL member              |       |
+| Method | URI                         | Semantic                         | Other |
+| :----: | --------------------------- | -------------------------------- | ----- |
+|  POST  | `/{key}`                    | Add value to KVS                 |       |
+|  POST  | `/{key}/-1`                 | Add member to OVL                |       |
+|  GET   | `/{key}`                    | Get value                        |       |
+|  GET   | `/{key}/`                   | Get value                        |       |
+|  GET   | `/{key}.{property}`         | Get property                     |       |
+|  GET   | `/{key}/{index}`            | Get the value of a OVL member    |       |
+|  GET   | `/{key}/{index}.{property}` | Get the property of a OVL member |       |
+|  PUT   | `/{key}`                    | Set value                        |       |
+|  PUT   | `/{key}.{property}`         | Set property                     |       |
+|  PUT   | `/{key}/{index}`            | Set the value of a OVL member    |       |
+|  PUT   | `/{key}/{index}.{property}` | Set the property of a OVL member |       |
+| DELETE | `/{key}`                    | Delete a value                   |       |
+| DELETE | `/{key}/{index}`            | Delete a OVL member              |       |
 
 - Use Header to declare the data format (the default is JSON):
 
